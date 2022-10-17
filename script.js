@@ -29,7 +29,7 @@ function generatePassword () {
 
     var optionsCart = []
     
-    for (var i = 0; i < lowercaseList,length; i++) {
+    for (var i = 0; i < lowercaseList.length; i++) {
     console.log(lowercaseList);
     }
 
@@ -48,7 +48,13 @@ function generatePassword () {
     if (userWantsSymbols === true) {
         optionsCart.push(symbolList)
     }
+
+    console.log(optionsCart)
+    var generatedPassword = ""
     
+    for (var i = 0; i < passwordLength; i++) {
+
+    }
 }
 
 
