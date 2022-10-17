@@ -1,8 +1,18 @@
-// Assignment code here
-
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+
+function generatePassword () {
+
+    var userInput = window.prompt("How many characters would you want your password?")
+
+    var passwordLength = parseInt(userInput)
+
+    if (isNaN(passwordLength)) {
+        window.alert("Please input a number!")
+    }
+
+}
+
 
 // Write password to the #password input
 function writePassword() {
