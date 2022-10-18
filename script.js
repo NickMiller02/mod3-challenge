@@ -1,6 +1,14 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
+function randomInt(min, max) {
+    return Math.floor(Math.random()*(max - min) + min)
+}
+
+function getRandomItem(list) {
+    return list[randomInt(0, list.length - 1)]
+}
+
 function generatePassword () {
 
     var userInput = window.prompt("How many characters would you want your password?")
@@ -25,13 +33,17 @@ function generatePassword () {
     var lowercaseList = [String.fromCharCode(Math.floor(Math.random() * 26) + 97)];
     var uppercaseList = [String.fromCharCode(Math.floor(Math.random() * 26) + 65)];
     var numberList = [String.fromCharCode(Math.floor(Math.random() * 10) + 48)];
+    //function symbolList() {
+        //var symbols = '!@#$%&*?';
+       // return symbols[Math.floor(Math.random() * symbols.length)];
+   // }
     var symbolList = ["!", "@", "#", "$", "%", "?", "&"];
 
     var optionsCart = []
     
-    for (var i = 0; i < lowercaseList.length; i++) {
-    console.log(lowercaseList);
-    }
+    //for (var i = 0; i < lowercaseList.length; i++) {
+    //console.log(lowercaseList);
+    //}
 
     if (userWantsLowercase === true) {
         optionsCart.push(lowercaseList)
@@ -47,13 +59,18 @@ function generatePassword () {
 
     if (userWantsSymbols === true) {
         optionsCart.push(symbolList)
+        console.log(optionsCart)
     }
 
     console.log(optionsCart)
+
+
     var generatedPassword = ""
     
     for (var i = 0; i < passwordLength; i++) {
-
+        var randomList = getRandomItem(optionsCart)
+        var randomChar = getRandomItem(randomList)
+        console.log(randomChar)
     }
 }
 
