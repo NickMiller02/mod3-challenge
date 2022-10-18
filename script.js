@@ -2,11 +2,17 @@
 var generateBtn = document.querySelector("#generate");
 
 function randomInt(min, max) {
-    return Math.floor(Math.random()*(max - min) + min)
+    if (!max) {
+        max = min
+        min = 0
+    }
+
+    var rand = Math.random()
+    return Math.floor(min*(1 - rand) + rand*max)
 }
 
 function getRandomItem(list) {
-    return list[randomInt(0, list.length - 1)]
+    return list[randomInt(list.length)]
 }
 
 function generatePassword () {
@@ -14,6 +20,10 @@ function generatePassword () {
     var userInput = window.prompt("How many characters would you want your password?")
 
     var passwordLength = parseInt(userInput)
+
+    if (userInput === null) {
+        return
+    }
 
     if (isNaN(passwordLength)) {
         window.alert("Please input a number!")
@@ -30,20 +40,16 @@ function generatePassword () {
     var userWantsNumbers = window.confirm("Do you want to include numbers?")
     var userWantsSymbols = window.confirm("Do you want to include symbols?")
 
-    var lowercaseList = [String.fromCharCode(Math.floor(Math.random() * 26) + 97)];
-    var uppercaseList = [String.fromCharCode(Math.floor(Math.random() * 26) + 65)];
-    var numberList = [String.fromCharCode(Math.floor(Math.random() * 10) + 48)];
-    //function symbolList() {
-        //var symbols = '!@#$%&*?';
-       // return symbols[Math.floor(Math.random() * symbols.length)];
-   // }
-    var symbolList = ["!", "@", "#", "$", "%", "?", "&"];
+    var lowercaseList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    var uppercaseList = []
+    var numberList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    var symbolList = ["!", "@", "#", "$", "%", "?", "^", "&"]
 
     var optionsCart = []
     
-    //for (var i = 0; i < lowercaseList.length; i++) {
-    //console.log(lowercaseList);
-    //}
+    for (var i = 0; i < lowercaseList.length; i++) {
+        uppercaseList[i] = lowercaseList[i].toUpperCase()
+    }
 
     if (userWantsLowercase === true) {
         optionsCart.push(lowercaseList)
@@ -59,19 +65,21 @@ function generatePassword () {
 
     if (userWantsSymbols === true) {
         optionsCart.push(symbolList)
-        console.log(optionsCart)
     }
 
-    console.log(optionsCart)
-
+    if (optionsCart.length === 0) {
+        optionsCart.push(lowercaseList)
+    }
 
     var generatedPassword = ""
     
     for (var i = 0; i < passwordLength; i++) {
         var randomList = getRandomItem(optionsCart)
         var randomChar = getRandomItem(randomList)
-        console.log(randomChar)
+        generatedPassword += randomChar
     }
+    
+    return generatedPassword
 }
 
 
@@ -87,5 +95,4 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword)
 
-//Generating Characters
 
