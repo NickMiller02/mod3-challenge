@@ -15,7 +15,11 @@ function getRandomItem(list) {
     return list[randomInt(list.length)]
 }
 
+//Generation Function
+
 function generatePassword () {
+
+    //User Prompts
 
     var userInput = window.prompt("How many characters would you want your password?")
 
@@ -40,10 +44,17 @@ function generatePassword () {
     var userWantsNumbers = window.confirm("Do you want to include numbers?")
     var userWantsSymbols = window.confirm("Do you want to include symbols?")
 
-    var lowercaseList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    //Character Variables
+
+    var lowercaseList = [String.fromCharCode(Math.floor(Math.random() * 26) + 97)]
     var uppercaseList = []
-    var numberList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    var numberList = [String.fromCharCode(Math.floor(Math.random() * 10) + 48)]
     var symbolList = ["!", "@", "#", "$", "%", "?", "^", "&"]
+
+    // var lowercaseList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    // var uppercaseList = []
+    // var numberList = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    // var symbolList = ["!", "@", "#", "$", "%", "?", "^", "&"]
 
     var optionsCart = []
     
